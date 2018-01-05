@@ -25,6 +25,4 @@ class TutorialPipeline(object):
             f.write('\n')
             f.write(str(item['tag4']))
             f.write('\n')
-            f.write(str(item['href']))
-            f.write('\n')
         return item

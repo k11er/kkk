@@ -17,15 +17,11 @@ class ToScrapeCSSSpider(scrapy.Spider):
                 'tag2': times.xpath('./div[@class="tags"]/a[2]/text()').extract(),
                 'tag3': times.xpath('./div[@class="tags"]/a[3]/text()').extract(),
                 'tag4': times.xpath('./div[@class="tags"]/a[4]/text()').extract(),
-                'href': times.xpath('./div[@class="csdn-pagination hide-set"]/span/a[last()-1]/text()').extract(),
             }
 
-        next_page = response.xpath('./div[@class="csdn-pagination hide-set"]/span/a[last()-1]/text()').extract()
+        next_page = response.xpath('//div[@class="csdn-pagination hide-set"]/span/a[last()-1]/text()').extract()
+        print(next_page[0])
         if next_page[0] == '下一页':
-            next_page_href = response.xpath('./div[@class="csdn-pagination hide-set"]/span/a[last()-1]/@href').extract()[0]
+            next_page_href = response.xpath('//div[@class="csdn-pagination hide-set"]/span/a[last()-1]/@href').extract()[0]
+            next_page_href= 'http://ask.csdn.net/'+next_page_href
             yield scrapy.Request(url=next_page_href,callback=self.parse)
-
-
-
-
-
