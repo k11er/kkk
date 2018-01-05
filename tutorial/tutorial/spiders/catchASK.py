@@ -9,9 +9,12 @@ class ToScrapeCSSSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-
         for times in response.xpath('//div[@class="questions_detail_con"]'):
             yield {
                 'date': times.xpath('./div[@class="q_time"]/span/text()').extract(),
-                'tags': times.xpath('./div[@class="tags"]//a/text()').extract(),
+                'tag0': times.xpath('./div[@class="tags"]/a[0]/text()').extract(),
+                'tag1': times.xpath('./div[@class="tags"]/a[1]/text()').extract(),
+                'tag2': times.xpath('./div[@class="tags"]/a[2]/text()').extract(),
+                'tag3': times.xpath('./div[@class="tags"]/a[3]/text()').extract(),
+                'tag4': times.xpath('./div[@class="tags"]/a[4]/text()').extract(),
             }

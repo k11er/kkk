@@ -15,6 +15,14 @@ class TutorialPipeline(object):
         with open(fiename, 'a') as f:
             f.write(str(item['date']))
             f.write('\n')
-            f.write(str(item['tags']))
+            f.write(str(item['tag0']))
+            f.write('\n')
+            f.write(str(item['tag1']))
+            f.write('\n')
+            f.write(str(item['tag2']))
+            f.write('\n')
+            f.write(str(item['tag3']))
+            f.write('\n')
+            f.write(str(item['tag4']))
             f.write('\n')
         return item
