@@ -12,7 +12,44 @@ class TutorialPipeline(object):
     def process_item(self, item, spider):
         conn=sqlite3.connect("data.db")
         cursor=conn.cursor()
-        cursor.execute('insert into askdata values (?,?,?,?,?,?)',(str(item['date']),str(item['tag0']),str(item['tag1']),str(item['tag2']),str(item['tag3']),str(item['tag4'])))
+
+        Date = str(item['date'])
+        if len(str(item['tag0'])) == 2:
+            Tag0 = '0'
+        else:
+            Tag0 = str(item['tag0']).split('[]')
+
+        if len(str(item['tag1'])) == 2:
+            Tag1 = '0'
+        else:
+            Tag1 = str(item['tag1']).split('[]')
+            print(Tag0[1, -1])
+
+        if len(str(item['tag2'])) == 2:
+            Tag2 = '0'
+        else:
+            Tag2 = str(item['tag2']).split('[]')
+
+        if len(str(item['tag3'])) == 2:
+            Tag3 = '0'
+        else:
+            Tag3 = str(item['tag3']).split('[]')
+
+        if len(str(item['tag4'])) == 2:
+            Tag4 = '0'
+        else:
+            Tag4 = str(item['tag4']).split('[',']')
+
+        print(type(Tag0))
+
+        # for i in range(5):
+        #     if str(item['tag'+i]) == '[]':
+        #         Tagi = 'NULL'
+        #     else:
+        #         Tagi = str(item['tag'+i])
+        #         Tagi = Tagi.split('[]')
+
+        cursor.execute('insert into askdata values (?,?,?,?,?,?)',(Date,Tag0,Tag1,Tag2,Tag3,Tag4))
         cursor.execute('select * from askdata ')
         result=cursor.fetchall()
         print(result)
