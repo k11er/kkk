@@ -14,6 +14,8 @@ class TutorialPipeline(object):
         cursor=conn.cursor()
 
         Date = str(item['date'])
+        Date=Date[1:-1]
+        Date=Date[1:-3]
         if len(str(item['tag0'])) == 2:
             Tag0 = '0'
         else:
@@ -22,26 +24,30 @@ class TutorialPipeline(object):
         if len(str(item['tag1'])) == 2:
             Tag1 = '0'
         else:
-            Tag1 = str(item['tag1']).split('[]')
-            print(Tag0[1, -1])
+            Tag1 = str(item['tag1'])
+            Tag1=Tag1[1:-1]
+            Tag1=Tag1[1:-1]
 
         if len(str(item['tag2'])) == 2:
             Tag2 = '0'
         else:
-            Tag2 = str(item['tag2']).split('[]')
+            Tag2 = str(item['tag2'])
+            Tag2=Tag2[1:-1]
+            Tag2=Tag2[1:-1]
 
         if len(str(item['tag3'])) == 2:
             Tag3 = '0'
         else:
-            Tag3 = str(item['tag3']).split('[]')
+            Tag3 = str(item['tag3'])
+            Tag3=Tag3[1:-1]
+            Tag3=Tag3[1:-1]
 
         if len(str(item['tag4'])) == 2:
             Tag4 = '0'
         else:
-            Tag4 = str(item['tag4']).split('[',']')
-
-        print(type(Tag0))
-
+            Tag4 = str(item['tag4'])
+            Tag4=Tag4[1:-1]
+            Tag4=Tag4[1:-1]
         # for i in range(5):
         #     if str(item['tag'+i]) == '[]':
         #         Tagi = 'NULL'
