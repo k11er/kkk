@@ -17,7 +17,7 @@ def draw_bar(list1,list2):
     plt.ylabel('number')
     plt.title('hot label')
 
-handle = open('2017out.csv','r')
+handle = open('2017out.csv','r',encoding='UTF-8')
 reader = csv.reader(handle)
 list1 =[]
 list2 =[]
@@ -28,9 +28,6 @@ list1 = list1[11:]
 list2 = list2[11:]
 print(list1)
 print(list2)
-#draw_bar(list1,list2)
-draw_pie(list1,list2)
+draw_bar(list1,list2)
+#draw_pie(list1,list2)
 plt.show()
-
-
-
